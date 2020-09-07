@@ -8,21 +8,21 @@ export interface ISearchFormProps {
 function SearchForm(props: ISearchFormProps) {
     const [searchTerm, setSearchTerm] = React.useState<string | undefined>(undefined);
 
-    const handleChange = (event: any) => {
-        setSearchTerm(event.target.value);
-    };
-
     useEffect(() => {
-        if (!searchTerm || searchTerm.trim() === "") {
-            props.clearSearchResults();
-        } else {
-            props.fetchItems(searchTerm.toLowerCase().trim());
-        }
+        const timeout = setTimeout(() => {
+            if (!searchTerm || searchTerm.trim() === "") {
+                props.clearSearchResults();
+            } else {
+                props.fetchItems(searchTerm.toLowerCase().trim());
+            }
+        }, 2000);
+
+        return () => clearTimeout(timeout);
     }, [searchTerm]);
 
     return (
         <div className="SearchForm">
-            <input type="text" placeholder="Search by card name" value={searchTerm} onChange={handleChange} />
+            <input type="text" placeholder="Search by card name" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
         </div>
     );
 }
