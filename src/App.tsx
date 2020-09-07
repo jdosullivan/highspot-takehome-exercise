@@ -1,12 +1,11 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./styles/App.css";
-import ElderScrollPage from "./pages/ElderScrollCardPage";
+import List from "./pages/InfiniteLoadTester";
 
 function App() {
     return (
         <div className="App">
-            <ElderScrollPage />
+            <List />
         </div>
     );
 }
