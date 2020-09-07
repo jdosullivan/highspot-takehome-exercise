@@ -5,7 +5,7 @@ export interface ICardListProps {
     cards: ElderScrollCardModel[];
 }
 
-function CardList(props: ICardListProps) {
+function CardGrid(props: ICardListProps) {
     return (
         <>
             {props.cards.map((card: ElderScrollCardModel, index: number) => (
@@ -27,4 +27,4 @@ function CardList(props: ICardListProps) {
     );
 }
 
-export default CardList;
+export default CardGrid;

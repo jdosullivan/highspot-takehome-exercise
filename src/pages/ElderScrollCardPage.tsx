@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { fetchCards } from "../api/ElderScrollApi";
 import { ElderScrollCardModel } from "../core/Models";
 import SearchForm from "../components/SearchForm";
-import CardList from "../components/CardList";
+import CardGrid from "../components/CardGrid";
 
 const pageSize: number = 20;
 // const ImageComponent = React.lazy(() => import("./Image"));
@@ -95,9 +95,8 @@ const ElderScrollCardPage = () => {
     return (
         <>
             <SearchForm fetchItems={searchData} clearSearchResults={clearSearchResults} />
-            {searchResults && <CardList cards={searchResults} />}
-            {!searchResults && <CardList cards={listItems} />}
-            {isFetching && <h1>Fetching more list items...</h1>}
+            <CardGrid cards={searchResults ?? listItems} />
+            {listItems && isFetching && <h1>Fetching more list items...</h1>}
         </>
     );
 };
