@@ -1,11 +1,11 @@
 import React from "react";
 import "./styles/App.css";
-import List from "./pages/InfiniteLoadTester";
+import ElderScrollPage from "./pages/ElderScrollCardPage";
 
 function App() {
     return (
         <div className="App">
-            <List />
+            <ElderScrollPage />
         </div>
     );
 }
