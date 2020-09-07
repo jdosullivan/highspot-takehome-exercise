@@ -86,10 +86,7 @@ const ElderScrollCardPage = () => {
         };
 
         if (!isFetching) return;
-
-        setTimeout(async () => {
-            fetchMoreListItems();
-        }, 1000);
+        fetchMoreListItems();
     }, [isFetching]);
 
     return (
