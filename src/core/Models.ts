@@ -1,4 +1,4 @@
-export interface ElderScrollCardModel {
+export interface CardModel {
     id: string;
     name: string;
     rarity: string; // Considered using an enum but was not sure if there was a defined set of acceptable values

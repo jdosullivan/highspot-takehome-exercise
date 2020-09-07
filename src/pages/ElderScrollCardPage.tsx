@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { fetchCards } from "../api/ElderScrollApi";
-import { ElderScrollCardModel } from "../core/Models";
+import { CardModel } from "../core/Models";
 import SearchForm from "../components/SearchForm";
 import CardGrid from "../components/CardGrid";
 
 const pageSize: number = 20;
 
 const ElderScrollCardPage = () => {
-    const [listItems, _setListItems] = useState<ElderScrollCardModel[]>([]);
+    const [listItems, _setListItems] = useState<CardModel[]>([]);
     const [totalItems, _setTotalItems] = useState<number | undefined>(undefined);
     const [isFetching, _setIsFetching] = useState(false);
     const [page, setPage] = useState(1);
-    const [searchResults, setSearchResults] = useState<ElderScrollCardModel[] | undefined>(undefined);
+    const [searchResults, setSearchResults] = useState<CardModel[] | undefined>(undefined);
 
     const fetchData = async () => {
         const data = await fetchCards({
@@ -53,7 +53,7 @@ const ElderScrollCardPage = () => {
     };
 
     const listItemsRef = React.useRef(listItems);
-    const setListItems = (val: ElderScrollCardModel[]) => {
+    const setListItems = (val: CardModel[]) => {
         listItemsRef.current = val;
         _setListItems(val);
     };

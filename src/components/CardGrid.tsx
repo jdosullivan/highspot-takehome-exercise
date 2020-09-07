@@ -1,17 +1,17 @@
 import React from "react";
-import { ElderScrollCardModel } from "../core/Models";
-import "../styles/CardGrid.css";
+import { CardModel } from "../core/Models";
 import ElderScrollCard from "./ElderScrollCard";
+import "../styles/CardGrid.css";
 
-export interface ICardListProps {
-    cards: ElderScrollCardModel[];
+export interface ICardGridProps {
+    cards: CardModel[];
 }
 
-function CardGrid(props: ICardListProps) {
+function CardGrid(props: ICardGridProps) {
     return (
         <div className="card-grid">
             <div className="row">
-                {props.cards.map((card: ElderScrollCardModel, index: number) => (
+                {props.cards.map((card: CardModel) => (
                     <ElderScrollCard card={card} />
                 ))}
             </div>

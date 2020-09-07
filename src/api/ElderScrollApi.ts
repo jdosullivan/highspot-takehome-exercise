@@ -1,7 +1,7 @@
-import { ElderScrollCardModel } from "../core/Models";
+import { CardModel } from "../core/Models";
 
 export interface ElderScrollCardsApiResponse {
-    cards: ElderScrollCardModel[];
+    cards: CardModel[];
     _links: {
         next: string;
     };

@@ -1,10 +1,10 @@
 import React, { Suspense } from "react";
-import { ElderScrollCardModel } from "../core/Models";
+import { CardModel } from "../core/Models";
 
 const ImageComponent = React.lazy(() => import("./Image"));
 
 export interface IElderScrollCardProps {
-    card: ElderScrollCardModel;
+    card: CardModel;
 }
 
 function ElderScrollCard(props: IElderScrollCardProps) {
