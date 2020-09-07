@@ -14,7 +14,7 @@ function CardGrid(props: ICardListProps) {
             <div className="row">
                 {props.cards.map((card: ElderScrollCardModel, index: number) => (
                     <div className="card item" key={card.id}>
-                        <Suspense fallback={<img src="" alt="Avatar" style={{ width: "50%" }} />}>
+                        <Suspense fallback={<img src={card.imageUrl} alt={card.name} style={{ width: "50%" }} />}>
                             <ImageComponent src={card.imageUrl} alt={card.name} />
                         </Suspense>
                         <div className="card-details">
