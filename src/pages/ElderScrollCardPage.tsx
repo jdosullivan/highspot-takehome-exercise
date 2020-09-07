@@ -5,7 +5,6 @@ import SearchForm from "../components/SearchForm";
 import CardGrid from "../components/CardGrid";
 
 const pageSize: number = 20;
-// const ImageComponent = React.lazy(() => import("./Image"));
 
 const ElderScrollCardPage = () => {
     const [listItems, _setListItems] = useState<ElderScrollCardModel[]>([]);
