@@ -9,6 +9,7 @@ const List = () => {
     const [totalItems, _setTotalItems] = useState<number | undefined>(undefined);
     const [isFetching, _setIsFetching] = useState(false);
     const [page, setPage] = useState(1);
+    const [selectedCard, setSelectedCard] = useState<ElderScrollCardModel | undefined>(undefined);
     const pageSize: number = 20;
 
     const fetchData = async () => {
@@ -76,26 +77,30 @@ const List = () => {
         }, 1000);
     }, [isFetching]);
 
-    return (
-        <>
-            {listItems.map((listItem: ElderScrollCardModel, index: number) => (
-                <div className="card" key={`${listItem.id}_${Math.random()}`}>
-                    {/* <Suspense fallback={<img src="https://media.tenor.com/images/b660fe2525e3a20771c924a6cdd16d35/tenor.gif" alt="Avatar" style={{ width: "50%" }} />}>
-                        <ImageComponent src={listItem.imageUrl} />
-                    </Suspense> */}
+    if (selectedCard) {
+        return <div>A card is selected </div>;
+    } else {
+        return (
+            <>
+                {listItems.map((listItem: ElderScrollCardModel, index: number) => (
+                    <div className="card" key={`${listItem.id}_${Math.random()}`}>
+                        {/* <Suspense fallback={<img src="https://media.tenor.com/images/b660fe2525e3a20771c924a6cdd16d35/tenor.gif" alt="Avatar" style={{ width: "50%" }} />}>
+                            <ImageComponent src={listItem.imageUrl} />
+                        </Suspense> */}
 
-                    <div className="container">
-                        <h4>
-                            <b>
-                                {index}: {listItem.name}
-                            </b>
-                        </h4>
+                        <div className="container">
+                            <h4>
+                                <b>
+                                    {index}: {listItem.name}
+                                </b>
+                            </h4>
+                        </div>
                     </div>
-                </div>
-            ))}
-            {isFetching && <h1>Fetching more list items...</h1>}
-        </>
-    );
+                ))}
+                {isFetching && <h1>Fetching more list items...</h1>}
+            </>
+        );
+    }
 };
 
 export default List;
