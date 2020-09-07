@@ -12,6 +12,7 @@ const ElderScrollCardPage = () => {
     const [isFetching, _setIsFetching] = useState(false);
     const [page, setPage] = useState(1);
     const [searchResults, setSearchResults] = useState<CardModel[] | undefined>(undefined);
+    const [isSearching, setIsSearching] = React.useState<boolean>(false);
 
     const fetchData = async () => {
         const data = await fetchCards({
@@ -24,11 +25,13 @@ const ElderScrollCardPage = () => {
     };
 
     const searchData = async (searchTerm: string) => {
+        setIsSearching(true);
         const data = await fetchCards({
             name: searchTerm, // This does a partial match. Should we be doing an exact match?
         });
         setSearchResults(data.cards);
-        // setTotalItems(data._totalCount);
+        setIsSearching(false);
+        setTotalItems(data._totalCount);
         return data.cards;
     };
 
@@ -90,6 +93,7 @@ const ElderScrollCardPage = () => {
 
     return (
         <>
+            {isSearching && <div>Searching...</div>}
             <SearchForm fetchItems={searchData} clearSearchResults={clearSearchResults} />
             <CardGrid cards={searchResults ?? listItems} />
             {listItems && isFetching && <h1>Fetching more list items...</h1>}
