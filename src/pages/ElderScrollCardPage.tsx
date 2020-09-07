@@ -5,7 +5,6 @@ import SearchForm from "../components/SearchForm";
 import CardGrid from "../components/CardGrid";
 
 const pageSize: number = 20;
-// const ImageComponent = React.lazy(() => import("./Image"));
 
 const ElderScrollCardPage = () => {
     const [listItems, _setListItems] = useState<ElderScrollCardModel[]>([]);
@@ -86,10 +85,7 @@ const ElderScrollCardPage = () => {
         };
 
         if (!isFetching) return;
-
-        setTimeout(async () => {
-            fetchMoreListItems();
-        }, 1000);
+        fetchMoreListItems();
     }, [isFetching]);
 
     return (
