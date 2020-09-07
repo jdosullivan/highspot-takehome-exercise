@@ -2,15 +2,15 @@ import React, { useState, useEffect } from "react";
 import { fetchCards } from "../api/ElderScrollApi";
 import { ElderScrollCardModel } from "../core/Models";
 
+const pageSize: number = 20;
 // const ImageComponent = React.lazy(() => import("./Image"));
 
-const List = () => {
+const ElderScrollCardPage = () => {
     const [listItems, _setListItems] = useState<ElderScrollCardModel[]>([]);
     const [totalItems, _setTotalItems] = useState<number | undefined>(undefined);
     const [isFetching, _setIsFetching] = useState(false);
     const [page, setPage] = useState(1);
     const [selectedCard, setSelectedCard] = useState<ElderScrollCardModel | undefined>(undefined);
-    const pageSize: number = 20;
 
     const fetchData = async () => {
         const data = await fetchCards({
@@ -103,4 +103,4 @@ const List = () => {
     }
 };
 
-export default List;
+export default ElderScrollCardPage;
