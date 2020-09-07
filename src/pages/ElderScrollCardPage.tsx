@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { fetchCards } from "../api/ElderScrollApi";
 import { ElderScrollCardModel } from "../core/Models";
+import SearchForm from "../components/SearchForm";
+import CardList from "../components/CardList";
 
 const pageSize: number = 20;
 // const ImageComponent = React.lazy(() => import("./Image"));
@@ -10,7 +12,7 @@ const ElderScrollCardPage = () => {
     const [totalItems, _setTotalItems] = useState<number | undefined>(undefined);
     const [isFetching, _setIsFetching] = useState(false);
     const [page, setPage] = useState(1);
-    const [selectedCard, setSelectedCard] = useState<ElderScrollCardModel | undefined>(undefined);
+    const [searchResults, setSearchResults] = useState<ElderScrollCardModel[] | undefined>(undefined);
 
     const fetchData = async () => {
         const data = await fetchCards({
@@ -20,6 +22,19 @@ const ElderScrollCardPage = () => {
         setTotalItems(data._totalCount);
         setPage(page + 1);
         setListItems([...listItems, ...data.cards]);
+    };
+
+    const searchData = async (searchTerm: string) => {
+        const data = await fetchCards({
+            name: searchTerm, // This does a partial match. Should we be doing an exact match?
+        });
+        setSearchResults(data.cards);
+        // setTotalItems(data._totalCount);
+        return data.cards;
+    };
+
+    const clearSearchResults = (): void => {
+        setSearchResults(undefined);
     };
 
     // ******** Define refs for handlers in react ***************************
@@ -77,30 +92,14 @@ const ElderScrollCardPage = () => {
         }, 1000);
     }, [isFetching]);
 
-    if (selectedCard) {
-        return <div>A card is selected </div>;
-    } else {
-        return (
-            <>
-                {listItems.map((listItem: ElderScrollCardModel, index: number) => (
-                    <div className="card" key={`${listItem.id}_${Math.random()}`}>
-                        {/* <Suspense fallback={<img src="https://media.tenor.com/images/b660fe2525e3a20771c924a6cdd16d35/tenor.gif" alt="Avatar" style={{ width: "50%" }} />}>
-                            <ImageComponent src={listItem.imageUrl} />
-                        </Suspense> */}
-
-                        <div className="container">
-                            <h4>
-                                <b>
-                                    {index}: {listItem.name}
-                                </b>
-                            </h4>
-                        </div>
-                    </div>
-                ))}
-                {isFetching && <h1>Fetching more list items...</h1>}
-            </>
-        );
-    }
+    return (
+        <>
+            <SearchForm fetchItems={searchData} clearSearchResults={clearSearchResults} />
+            {searchResults && <CardList cards={searchResults} />}
+            {!searchResults && <CardList cards={listItems} />}
+            {isFetching && <h1>Fetching more list items...</h1>}
+        </>
+    );
 };
 
 export default ElderScrollCardPage;
