@@ -8,11 +8,11 @@ export interface ISearchFormProps {
 }
 
 function SearchForm(props: ISearchFormProps) {
-    const [searchTerm, setSearchTerm] = React.useState<string | undefined>(undefined);
+    const [searchTerm, setSearchTerm] = React.useState<string>("");
 
     useEffect(() => {
         const timeout = setTimeout(() => {
-            if (!searchTerm || searchTerm.trim() === "") {
+            if (searchTerm.trim() === "") {
                 props.clearSearchResults();
             } else {
                 props.fetchItems(searchTerm.toLowerCase().trim());
