@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 
-const typingTimeout: number = 2; // Number of seconds to wait after typing before searching
+const typingTimeout: number = 1; // Number of seconds to wait after typing before searching
 
 export interface ISearchFormProps {
     fetchItems: Function;
