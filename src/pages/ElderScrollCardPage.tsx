@@ -11,6 +11,7 @@ const pageSize: number = 20;
 const ElderScrollCardPage = () => {
     const [listItems, _setListItems] = useState<CardModel[]>([]);
     const [totalItems, _setTotalItems] = useState<number | undefined>(undefined);
+    const [totalSearchResults, setTotalSearchResults] = useState<number | undefined>(undefined);
     const [isFetching, _setIsFetching] = useState(false);
     const [page, setPage] = useState(1);
     const [searchResults, setSearchResults] = useState<CardModel[] | undefined>(undefined);
@@ -33,7 +34,7 @@ const ElderScrollCardPage = () => {
         });
         setSearchResults(data.cards);
         setIsSearching(false);
-        setTotalItems(data._totalCount);
+        setTotalSearchResults(data._totalCount);
         return data.cards;
     };
 
@@ -101,8 +102,8 @@ const ElderScrollCardPage = () => {
             {!isSearching && (
                 <div className="results">
                     <div className="displayCount">
-                        {searchResults && <div>{totalItems} cards found</div>}
-                        {listItems && (
+                        {searchResults && <div>{totalSearchResults} cards found</div>}
+                        {!searchResults && (
                             <div>
                                 {listItems.length} of {totalItems} cards displayed
                             </div>

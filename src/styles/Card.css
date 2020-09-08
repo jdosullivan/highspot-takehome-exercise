@@ -71,6 +71,5 @@
 }
 
 .card .card-image {
-  width: 305px;
-  height: 494px;
+  width: 100%;
 }
