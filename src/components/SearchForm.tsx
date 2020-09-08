@@ -26,7 +26,7 @@ function SearchForm(props: ISearchFormProps) {
 
     return (
         <div className="searchForm">
-            <input className="searchBox" type="text" placeholder="Search by card name..." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
+            <input className="searchBox" type="text" placeholder="Search by name..." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
             <button
                 className="clear"
                 type="reset"
