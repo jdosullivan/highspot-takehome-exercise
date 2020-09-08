@@ -1,0 +1,21 @@
+.searchForm {
+  display: inline-flex;
+  max-width: 575px;
+  margin: 0 auto;
+  padding: 10px;
+  background: #fff;
+  border-radius: 10px;
+}
+
+.searchForm input.searchBox {
+  border: none;
+  background: transparent;
+  font-size: 1.5rem;
+  outline: none;
+}
+
+.searchForm button {
+  background: transparent;
+  border: none;
+  outline: none;
+}
