@@ -12,7 +12,7 @@ function CardGrid(props: ICardGridProps) {
         <div className="card-grid">
             <div className="row">
                 {props.cards.map((card: CardModel) => (
-                    <ElderScrollCard card={card} />
+                    <ElderScrollCard card={card} key={card.id} />
                 ))}
             </div>
         </div>
