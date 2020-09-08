@@ -1,6 +1,7 @@
 .card-grid {
   max-width: 1335px;
   margin: 0 auto;
+  padding: 10px;
 }
 
 .card-grid .row {
@@ -9,31 +10,21 @@
   justify-content: flex-start;
 }
 
-.card-grid .row>.item {
-  flex-basis: 25%;
-  -ms-flex: auto;
-  width: 24%;
-  position: relative;
-  padding: 10px;
-  margin-bottom: 20px;
-  box-sizing: border-box;
-}
-
 @media(max-width: 1333px) {
   .card-grid .row>.item {
-    flex-basis: 33.33%;
+    flex-basis: 30%;
   }
 }
 
 @media(max-width: 1073px) {
   .card-grid .row>.item {
-    flex-basis: 33.33%;
+    flex-basis: 45%;
   }
 }
 
 @media(max-width: 815px) {
   .card-grid .row>.item {
-    flex-basis: 50%;
+    flex-basis: 100%;
   }
 }
 
