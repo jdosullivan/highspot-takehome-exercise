@@ -1,7 +1,7 @@
 import React from "react";
 import { CardModel } from "../core/Models";
 import Card from "./Card";
-import "../styles/CardGrid.css";
+import "../styles/Card.css";
 
 export interface ICardGridProps {
     cards: CardModel[];

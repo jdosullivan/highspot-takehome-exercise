@@ -4,6 +4,7 @@ import { CardModel } from "../core/Models";
 import SearchForm from "../components/SearchForm";
 import CardGrid from "../components/CardGrid";
 import PageHeader from "../components/PageHeader";
+import "../styles/ElderScrollCardPage.css";
 
 const pageSize: number = 20;
 
@@ -97,8 +98,10 @@ const ElderScrollCardPage = () => {
             <PageHeader />
             {isSearching && <div>Searching...</div>}
             <SearchForm fetchItems={searchData} clearSearchResults={clearSearchResults} />
-            <CardGrid cards={searchResults ?? listItems} />
-            {listItems && isFetching && <h1>Fetching more list items...</h1>}
+            <div className="results">
+                <CardGrid cards={searchResults ?? listItems} />
+                {listItems && isFetching && <h1>Fetching more list items...</h1>}
+            </div>
         </>
     );
 };
