@@ -100,8 +100,16 @@ const ElderScrollCardPage = () => {
             {isSearching && <div className="searchingTextBlock">Searching...</div>}
             {!isSearching && (
                 <div className="results">
+                    <div className="displayCount">
+                        {searchResults && <div>{totalItems} cards found</div>}
+                        {listItems && (
+                            <div>
+                                {listItems.length} of {totalItems} cards displayed
+                            </div>
+                        )}
+                    </div>
                     <CardGrid cards={searchResults ?? listItems} />
-                    {listItems && isFetching && <h1>Fetching more list items...</h1>}
+                    {listItems && isFetching && <div className="searchingTextBlock">Fetching more list items...</div>}
                 </div>
             )}
         </>
