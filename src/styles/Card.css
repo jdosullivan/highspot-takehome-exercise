@@ -44,7 +44,7 @@
 }
 
 .card {
-  height: 550px;
+  height: 750px;
   width: 330px;
   flex-basis: 23%;
   -ms-flex: auto;
@@ -67,4 +67,8 @@
   color: white;
   padding: 10px;
   margin-bottom: 10px;
+}
+
+.card .card-image {
+  width: 100%;
 }
