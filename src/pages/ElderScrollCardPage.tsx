@@ -15,7 +15,7 @@ const ElderScrollCardPage = () => {
     const [totalSearchResults, setTotalSearchResults] = useState<number | undefined>(undefined);
     const [isFetching, _setIsFetching] = useState(false);
     const [page, setPage] = useState(1);
-    const [searchResults, setSearchResults] = useState<CardModel[] | undefined>(undefined);
+    const [searchResults, _setSearchResults] = useState<CardModel[] | undefined>(undefined);
     const [isSearching, setIsSearching] = React.useState<boolean>(false);
 
     const fetchData = async () => {
@@ -65,12 +65,19 @@ const ElderScrollCardPage = () => {
         listItemsRef.current = val;
         _setListItems(val);
     };
+
+    const searchResultsRef = React.useRef(searchResults);
+    const setSearchResults = (val: CardModel[] | undefined) => {
+        searchResultsRef.current = val;
+        _setSearchResults(val);
+    };
     // **************** End state refs ***********************************************
 
     // This effect runs on initial load only and loads the first page of data
     // It also sets up the scroll listener
     useEffect(() => {
         const handleScroll = () => {
+            if (searchResultsRef.current) return; // disable scroll if we have search results displayed
             if (
                 (totalItemsRef.current && listItemsRef.current.length >= totalItemsRef.current) ||
                 Math.ceil(window.innerHeight + document.documentElement.scrollTop) !== document.documentElement.offsetHeight ||
@@ -78,7 +85,6 @@ const ElderScrollCardPage = () => {
             )
                 return;
             setIsFetching(true);
-            console.log(`isFetching: ${isFetchingRef.current}`);
         };
 
         fetchData();
