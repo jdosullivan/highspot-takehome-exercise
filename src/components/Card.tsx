@@ -1,6 +1,7 @@
 import React from "react";
 import { CardModel } from "../core/Models";
 import "../styles/Card.css";
+import { truncate } from "../core/utils";
 
 export interface ICardProps {
     card: CardModel;
@@ -9,12 +10,24 @@ export interface ICardProps {
 function Card(props: ICardProps) {
     return (
         <div className="card item" key={props.card.id}>
+            <div className="card-type">
+                <span>{props.card.type}</span>
+            </div>
             <img src={props.card.imageUrl} alt={props.card.name} style={{ width: "50%" }} />
             <div className="card-details">
                 <h3 className="name">{props.card.name}</h3>
-                <p className="text">{props.card.text}</p>
-                <div>Set: {props.card.set?.name}</div>
-                <div>Type: {props.card.type}</div>
+                <p className="text" title={props.card.text}>
+                    {truncate(props.card.text, 200)}
+                </p>
+                <div className="card-set-name">
+                    <span className="subtitle">Set:</span> {props.card.set?.name}
+                </div>
+                <div className="card-set-rarity">
+                    <span className="subtitle">Rarity:</span> {props.card.rarity}
+                </div>
+                <div className="card-set-cost">
+                    <span className="subtitle">Cost:</span> {props.card.cost}
+                </div>
             </div>
         </div>
     );

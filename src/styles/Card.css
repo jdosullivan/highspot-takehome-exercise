@@ -8,7 +8,7 @@
 }
 
 .card {
-  height: 450px;
+  height: 550px;
   width: 330px;
   flex-basis: 23%;
   -ms-flex: auto;
@@ -18,6 +18,17 @@
   word-wrap: break-word;
   background-color: #fff;
   background-clip: border-box;
-  border: 1px solid #ebedf3;
-  border-radius: .42rem;
+  border: 1px solid #000;
+  padding-bottom: 10px;
+}
+
+.card .subtitle {
+  font-weight: 700;
+}
+
+.card .card-type {
+  background-color: blue;
+  color: white;
+  padding: 10px;
+  margin-bottom: 10px;
 }
