@@ -96,12 +96,14 @@ const ElderScrollCardPage = () => {
     return (
         <>
             <PageHeader />
-            {isSearching && <div>Searching...</div>}
             <SearchForm fetchItems={searchData} clearSearchResults={clearSearchResults} />
-            <div className="results">
-                <CardGrid cards={searchResults ?? listItems} />
-                {listItems && isFetching && <h1>Fetching more list items...</h1>}
-            </div>
+            {isSearching && <div className="searchingTextBlock">Searching...</div>}
+            {!isSearching && (
+                <div className="results">
+                    <CardGrid cards={searchResults ?? listItems} />
+                    {listItems && isFetching && <h1>Fetching more list items...</h1>}
+                </div>
+            )}
         </>
     );
 };
