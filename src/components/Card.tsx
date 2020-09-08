@@ -22,12 +22,6 @@ function Card(props: ICardProps) {
                 <div className="card-set-name">
                     <span className="subtitle">Set:</span> {props.card.set?.name}
                 </div>
-                <div className="card-set-rarity">
-                    <span className="subtitle">Rarity:</span> {props.card.rarity}
-                </div>
-                <div className="card-set-cost">
-                    <span className="subtitle">Cost:</span> {props.card.cost}
-                </div>
             </div>
         </div>
     );

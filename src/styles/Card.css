@@ -5,6 +5,7 @@
 
 .card-details h3 {
   margin-bottom: 14px;
+  margin-top: 0;
 }
 
 .card-grid {
@@ -70,5 +71,6 @@
 }
 
 .card .card-image {
-  width: 100%;
+  width: 305px;
+  height: 494px;
 }
