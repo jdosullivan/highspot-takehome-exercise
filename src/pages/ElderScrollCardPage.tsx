@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import LoadingOverlay from "react-loading-overlay";
 import { fetchCards } from "../api/ElderScrollApi";
 import { CardModel } from "../core/Models";
 import SearchForm from "../components/SearchForm";
@@ -24,6 +25,7 @@ const ElderScrollCardPage = () => {
         });
         setTotalItems(data._totalCount);
         setPage(page + 1);
+        setIsFetching(false);
         setListItems([...listItems, ...data.cards]);
     };
 
@@ -85,13 +87,8 @@ const ElderScrollCardPage = () => {
 
     // This effect runs every time we scroll to the end of the page and there is more data to load
     useEffect(() => {
-        const fetchMoreListItems = () => {
-            fetchData();
-            setIsFetching(false);
-        };
-
         if (!isFetching) return;
-        fetchMoreListItems();
+        fetchData();
     }, [isFetching]);
 
     return (
@@ -100,18 +97,20 @@ const ElderScrollCardPage = () => {
             <SearchForm fetchItems={searchData} clearSearchResults={clearSearchResults} />
             {isSearching && <div className="searchingTextBlock">Searching...</div>}
             {!isSearching && (
-                <div className="results">
-                    <div className="displayCount">
-                        {searchResults && <div>{totalSearchResults} cards found</div>}
-                        {!searchResults && (
-                            <div>
-                                {listItems.length} of {totalItems} cards displayed
-                            </div>
-                        )}
+                <LoadingOverlay active={isFetching} spinner text={`Loading next ${pageSize} cards...`}>
+                    <div className="results">
+                        <div className="displayCount">
+                            {searchResults && <div>{totalSearchResults} cards found</div>}
+                            {!searchResults && (
+                                <div>
+                                    {listItems.length} of {totalItems} cards displayed
+                                </div>
+                            )}
+                        </div>
+                        <CardGrid cards={searchResults ?? listItems} />
+                        {listItems && isFetching && <div className="searchingTextBlock">Fetching more list items...</div>}
                     </div>
-                    <CardGrid cards={searchResults ?? listItems} />
-                    {listItems && isFetching && <div className="searchingTextBlock">Fetching more list items...</div>}
-                </div>
+                </LoadingOverlay>
             )}
         </>
     );
