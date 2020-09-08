@@ -4,7 +4,7 @@ import "../styles/PageHeader.css";
 function PageHeader() {
     return (
         <div className="page-header">
-            <h1>Elder Scrolls Legends Cards</h1>
+            <h1>Elder Scrolls Legends - Cards</h1>
         </div>
     );
 }
