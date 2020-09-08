@@ -1,7 +1,9 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { CardModel } from "../core/Models";
 import "../styles/Card.css";
 import { truncate } from "../core/utils";
+
+const ImageComponent = React.lazy(() => import("./Image"));
 
 export interface ICardProps {
     card: CardModel;
@@ -13,7 +15,9 @@ function Card(props: ICardProps) {
             <div className="card-type">
                 <span>{props.card.type}</span>
             </div>
-            <img className="card-image" src={props.card.imageUrl} alt={props.card.name} />
+            <Suspense fallback={<img src={props.card.imageUrl} alt={props.card.name} style={{ width: "50%" }} />}>
+                <ImageComponent src={props.card.imageUrl} alt={props.card.name} />
+            </Suspense>
             <div className="card-details">
                 <h3 className="name">{props.card.name}</h3>
                 <p className="text" title={props.card.text}>
