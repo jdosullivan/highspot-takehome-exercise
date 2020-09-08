@@ -3,6 +3,7 @@ import { fetchCards } from "../api/ElderScrollApi";
 import { CardModel } from "../core/Models";
 import SearchForm from "../components/SearchForm";
 import CardGrid from "../components/CardGrid";
+import PageHeader from "../components/PageHeader";
 
 const pageSize: number = 20;
 
@@ -93,6 +94,7 @@ const ElderScrollCardPage = () => {
 
     return (
         <>
+            <PageHeader />
             {isSearching && <div>Searching...</div>}
             <SearchForm fetchItems={searchData} clearSearchResults={clearSearchResults} />
             <CardGrid cards={searchResults ?? listItems} />
