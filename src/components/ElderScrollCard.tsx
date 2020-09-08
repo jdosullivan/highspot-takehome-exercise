@@ -1,7 +1,5 @@
-import React, { Suspense } from "react";
+import React from "react";
 import { CardModel } from "../core/Models";
-
-const ImageComponent = React.lazy(() => import("./Image"));
 
 export interface IElderScrollCardProps {
     card: CardModel;
@@ -10,9 +8,7 @@ export interface IElderScrollCardProps {
 function ElderScrollCard(props: IElderScrollCardProps) {
     return (
         <div className="card item" key={props.card.id}>
-            <Suspense fallback={<img src={props.card.imageUrl} alt={props.card.name} style={{ width: "50%" }} />}>
-                <ImageComponent src={props.card.imageUrl} alt={props.card.name} />
-            </Suspense>
+            <img src={props.card.imageUrl} alt={props.card.name} style={{ width: "50%" }} />
             <div className="card-details">
                 <div>Name: {props.card.name}</div>
                 <div>Text: {props.card.text}</div>
