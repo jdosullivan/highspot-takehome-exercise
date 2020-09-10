@@ -41,7 +41,8 @@
         "restoreMocks": true,
         "moduleNameMapper": {
             "\\.(css|less|scss|sass)$": "identity-obj-proxy"
-        }
+        },
+        "preset": "ts-jest/presets/js-with-babel"
     },
     "devDependencies": {
         "identity-obj-proxy": "^3.0.0"
