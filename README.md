@@ -32,7 +32,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 > Installs all dependencies required by the application
 
--   `npm start` the application
+-   `npm start`
 
 > Runs the frontend in development mode. It will open [http://localhost:3000](http://localhost:3000) to view in browser. Any code changes will automatically reload the browser.
 
