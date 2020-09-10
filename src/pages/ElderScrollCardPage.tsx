@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import LoadingOverlay from "react-loading-overlay";
 import { fetchCards } from "../api/ElderScrollApi";
 import { CardModel } from "../core/Models";
 import SearchForm from "../components/SearchForm";
@@ -103,20 +102,22 @@ const ElderScrollCardPage = () => {
             <SearchForm fetchItems={searchData} clearSearchResults={clearSearchResults} />
             {isSearching && <div className="searchingTextBlock">Searching...</div>}
             {!isSearching && (
-                <LoadingOverlay active={isFetching} spinner text={`Loading next ${pageSize} cards...`}>
-                    <div className="results">
-                        <div className="displayCount">
-                            {searchResults && <div>{totalSearchResults} cards found</div>}
-                            {!searchResults && (
-                                <div>
-                                    {listItems.length} of {totalItems} cards displayed
-                                </div>
-                            )}
-                        </div>
-                        <CardGrid cards={searchResults ?? listItems} />
-                        {listItems && isFetching && <div className="searchingTextBlock">Fetching more list items...</div>}
+                <div className="results">
+                    <div className="displayCount">
+                        {searchResults && <div>{totalSearchResults} cards found</div>}
+                        {!searchResults && listItems && (
+                            <div>
+                                {listItems.length} of {totalItems} cards displayed
+                            </div>
+                        )}
                     </div>
-                </LoadingOverlay>
+                    <CardGrid cards={searchResults ?? listItems} />
+                    {listItems && isFetching && (
+                        <div data-testid="fetchMore" className="searchingTextBlock">
+                            Fetching more list items...
+                        </div>
+                    )}
+                </div>
             )}
         </>
     );
