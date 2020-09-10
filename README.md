@@ -55,8 +55,6 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 -   Displays details about each card including Name, Type, Image etc.
 
-In the project directory, you can run:
-
 ## Production
 
 -   `npm run build`
