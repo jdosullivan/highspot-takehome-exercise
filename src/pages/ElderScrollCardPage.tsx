@@ -18,7 +18,6 @@ const ElderScrollCardPage = () => {
     const [isSearching, setIsSearching] = React.useState<boolean>(false);
 
     const fetchData = async () => {
-        setIsFetching(true);
         const data = await fetchCards({
             pageSize,
             page,
@@ -84,6 +83,7 @@ const ElderScrollCardPage = () => {
                 isFetchingRef.current
             )
                 return;
+            setIsFetching(true);
         };
 
         fetchData();
