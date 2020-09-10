@@ -114,7 +114,7 @@ const ElderScrollCardPage = () => {
                     <CardGrid cards={searchResults ?? listItems} />
                     {listItems && isFetching && (
                         <div data-testid="fetchMore" className="searchingTextBlock">
-                            Fetching more list items...
+                            Loading cards...
                         </div>
                     )}
                 </div>
