@@ -81,6 +81,8 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 *   Default image if card image is missing
 
+*   Fix bottom half of page is white while searching
+
 ## Contact
 
 Please reach out via github.
