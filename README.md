@@ -28,15 +28,15 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 -   Clone this repository and navigate to the root of the repo
 
-*   `npm install`
+*   Run `npm install`
 
 > Installs all dependencies required by the application
 
--   `npm start`
+-   Run `npm start`
 
 > Runs the frontend in development mode. It will open [http://localhost:3000](http://localhost:3000) to view in browser. Any code changes will automatically reload the browser.
 
--   `npm test`
+-   Run `npm test` to validate the scenarios of the application
 
 > Launches the test runner in the interactive watch mode.<br />
 > See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
@@ -67,19 +67,19 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## To Do
 
+-   Loading spinner for first run and search experiences
+
 -   More unit tests to cover core scenarios
 
--   Error pages to handle UI when errors occur
+-   Error UI for unexpected errors
 
-*   Address accessibility shortcomings of components e.g aria tags on images
+*   Accessibility
 
-*   Add overlay to page while new items are being added during infinite scroll
-
-*   Add paging or infinite scrolling to search results
+*   Paging or infinite scrolling of search results
 
 *   Default image if card image is missing
 
-*   Fix bottom half of page is white while searching
+*   Background does not fill entire page while searching
 
 ## Contact
 
